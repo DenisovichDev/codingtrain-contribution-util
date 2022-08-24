@@ -49,7 +49,7 @@ You can also choose not to mention the input filename in the command line argume
 python3 main.py
 ```
 
-Now you should see the json files appear in the `output` folder. Check them to be sure that the script worked correctly. Now you can copy the contents of the `output` folder to your `showcase` directory.  
+Now you should see the json files appear in the `output` folder. Check them to be sure that the script worked correctly. Now you can copy the contents of the `output` folder to your `showcase` directory. Please note that the `.gitkeep` file is not to be copied into the `showcase` directory.  
 
 To reuse this script again, make sure to clean the directory:
 ```bash
