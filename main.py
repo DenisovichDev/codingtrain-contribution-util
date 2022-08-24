@@ -46,7 +46,6 @@ def main():
         # Selects the first argument only.
         # Literally no exception handling
         input_file = args[0]
-    print(input_file)
 
     contrib_dicts = []
 
@@ -113,7 +112,7 @@ def main():
         jsonObj = json.dumps(contribution, indent=4)
 
         # Writing to sample.json
-        with open("contribution" + str(idx + 1) + ".json", "w") as outfile:
+        with open("./output/contribution" + str(idx + 1) + ".json", "w") as outfile:
             outfile.write(jsonObj + '\n')
 
 

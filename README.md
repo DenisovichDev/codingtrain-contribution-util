@@ -1,18 +1,18 @@
 # Coding Train Contribution Porting Utility
 
-**Work in progress**
-
 This project was created to make the process of porting the contributions from the old
 Coding Train Website to the new one a bit easier for the contributors. This python script
 takes the old contribution metadata in markdown format as an input and creates individual
 json files containing the metadata of each individual contributions (following the new
 Gatsby format) that can now be copied into the `showcase` folder.
 
-Warning: I am not a python programmer, there must be ways to do this better. In that case please let me know.
+**Warning**: I am not a python programmer, there must be ways to do this better. In that case please let me know.
 
 ## How To Use
 
-Open the old video metadata file from the website archive (located [here](https://github.com/CodingTrain/website-archive/blob/main/_CodingChallenges/)), and copy only the contributions part to a txt file inside the directory of this script. For example:
+First clone this repo locally in your computer.
+
+Open the old video metadata file from the website archive (located [here](https://github.com/CodingTrain/website-archive/blob/main/_CodingChallenges/)), and copy only the contributions part to a `txt` file inside the directory of this script. For example:
 ```txt
   - title: "Asteroid Field"
     author:
@@ -36,18 +36,27 @@ Open the old video metadata file from the website archive (located [here](https:
     url: "https://bjorvack.github.io/code-challenges/challenges/cc-001-starfield/"
     source: "https://github.com/bjorvack/code-challenges/tree/master/challenges/cc-001-starfield"
 ```
-Remember to be careful about not skipping any spaces in the beginning. This file should be the exact copy of the contributions metadata. Name this file `contrib.txt`.  
+Remember to be careful about not skipping any spaces in the beginning. This file should be the exact copy of the contributions metadata. 
 
-Now run the script:
+Now run the command:
+```bash
+python3 main.py your_input_file.txt
+```
+
+You can also choose not to mention the input filename in the command line argument. In that case, simply name the text file `contrib.txt` and it will use it as the input by default. The command would be, simply:  
+
 ```bash
 python3 main.py
 ```
-Now you should see the json files appear in the directory. Check them to be sure that the script worked correctly.  
+
+Now you should see the json files appear in the `output` folder. Check them to be sure that the script worked correctly. Now you can copy the contents of the `output` folder to your `showcase` directory.  
 
 To reuse this script again, make sure to clean the directory:
 ```bash
-sudo rm -f *.json *.txt
+sudo rm -f output/*.json *.txt
 ```
+
+If you are not using bash or another UNIX command line, you can also just manually delete the JSON and the input files, and you are good to go.
 
 ## Comments
 
