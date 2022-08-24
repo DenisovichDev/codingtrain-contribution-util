@@ -5,6 +5,7 @@ from the markdown files to individual json files in the new website format
 """
 
 import json
+import sys
 
 title_iden = "  - title: "
 author_iden = "    author:"
@@ -13,11 +14,15 @@ name_url_iden = "      url: "
 url_iden = "    url: "
 
 # Checks if the string has quotes around it
+
+
 def hasQuotes(string):
     if string[0] == '"':
         return True
 
 # Cleans the strings (quotes and return chars)
+
+
 def cleanString(string):
     # Removing quotes
     if (hasQuotes(string)):
@@ -28,15 +33,29 @@ def cleanString(string):
         string = string[:return_char_idx]
     return string
 
+
 def main():
+    args = sys.argv[1:]  # Command line arguments
+    argc = len(args)
+
+    input_file = "contrib.txt"
+    # If there is the input filename is in the arguments
+    # It uses that as the input file stream, otherwise
+    # by default contrib.txt is used
+    if (argc > 0):
+        # Selects the first argument only.
+        # Literally no exception handling
+        input_file = args[0]
+    print(input_file)
+
     contrib_dicts = []
 
-    with open("contrib.txt", "r") as file:
+    with open(input_file, "r") as file:
         contrib_dict = {}
 
         # List of individual lines
         data = file.readlines()
-        
+
         index = 0
         while index < len(data):
             line = data[index]
@@ -65,8 +84,8 @@ def main():
                     name_url = name_url_line[len(name_url_iden):]
                     name_url = cleanString(name_url)
                     auth_dict = {
-                        "name" : name,
-                        "url" : name_url
+                        "name": name,
+                        "url": name_url
                     }
                     contrib_dict["author"] = auth_dict
                     index += 2
@@ -83,11 +102,11 @@ def main():
                 contrib_dict["url"] = url
                 index += 1
                 continue
-                
+
             index += 1
         contrib_dicts.append(contrib_dict.copy())
-                    
-    print(contrib_dicts)
+
+    # print(contrib_dicts)
 
     for idx in range(len(contrib_dicts)):
         contribution = contrib_dicts[idx]
@@ -96,8 +115,7 @@ def main():
         # Writing to sample.json
         with open("contribution" + str(idx + 1) + ".json", "w") as outfile:
             outfile.write(jsonObj + '\n')
-                
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()

@@ -1,3 +1,5 @@
 venv/
 contrib.txt
 __pycache__
+*.json
+*.sh
