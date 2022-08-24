@@ -12,6 +12,9 @@ author_iden = "    author:"
 name_iden = "      name: "
 name_url_iden = "      url: "
 url_iden = "    url: "
+video_id_iden = "    video_id: "
+
+YT_URL_FORMAT = "https://www.youtube.com/watch?v="
 
 # Checks if the string has quotes around it
 
@@ -91,7 +94,10 @@ def main():
                     continue
                 author_name = line[len(author_iden) + 1:]
                 author_name = cleanString(author_name)
-                contrib_dict["author"] = author_name
+                auth_dict = {
+                    "name": author_name,
+                }
+                contrib_dict["author"] = auth_dict
                 index += 1
                 continue
             # URL to preview
@@ -99,6 +105,14 @@ def main():
                 url = line[len(url_iden):]
                 url = cleanString(url)
                 contrib_dict["url"] = url
+                index += 1
+                continue
+            # Video ID
+            if line.find(video_id_iden) != -1:
+                video_id = line[len(video_id_iden):]
+                video_id = cleanString(video_id)
+                yt_url = YT_URL_FORMAT + video_id
+                contrib_dict["url"] = yt_url
                 index += 1
                 continue
 

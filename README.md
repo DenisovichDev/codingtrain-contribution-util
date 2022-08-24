@@ -60,5 +60,7 @@ If you are not using bash or another UNIX command line, you can also just manual
 
 ## Comments
 
-- This is a work in progress, should be finished in a day or two.
-- Currently doesn't support the `video_id` format for `url` link, I'll add it in a moment.
+- The script converts the `video_id` property to a valid `url` property
+- There is absolutely no exception handling, I'm sorry!
+- I would like to implement a way fetch the metadata directly from the website archive, but I feel like that would be a bit of an overkill
+- This whole project was written completely in a train, which is very appropriate, I feel.
