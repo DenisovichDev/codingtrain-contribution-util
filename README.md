@@ -32,7 +32,6 @@ Open the old video metadata file from the website archive (located [here](https:
   - title: "ES6 Starfield"
     author:
       name: "Bjorn Van Acker"
-      url: "https://bjorvack.github.io/code-challenges/"
     url: "https://bjorvack.github.io/code-challenges/challenges/cc-001-starfield/"
     source: "https://github.com/bjorvack/code-challenges/tree/master/challenges/cc-001-starfield"
 ```
@@ -62,6 +61,7 @@ If you are not using bash or another UNIX command line, you can also just manual
 
 - Make sure to always check the outout files before using them.
 - The script converts the `video_id` property to a valid `url` property.
+- The `source` property isn't used as discussed [here](https://github.com/CodingTrain/thecodingtrain.com/issues/244).
 - There is absolutely no exception handling, I'm sorry!
 - I would like to implement a way fetch the metadata directly from the website archive, but I feel like that would be a bit of an overkill
 - This whole project was written entirely in a train, which is very appropriate, I feel.
