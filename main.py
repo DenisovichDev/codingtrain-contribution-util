@@ -128,6 +128,7 @@ def main():
         # Writing to sample.json
         with open("./output/contribution" + str(idx + 1) + ".json", "w") as outfile:
             outfile.write(jsonObj + '\n')
+        print("\nFinished writing contribution" + str(idx + 1) + ".json")
 
 
 if __name__ == "__main__":
