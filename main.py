@@ -16,10 +16,13 @@ video_id_iden = "    video_id: "
 
 YT_URL_FORMAT = "https://www.youtube.com/watch?v="
 
-# Checks if the string has quotes around it
-
 
 def hasQuotes(string):
+    """Checks if the string has quotes.
+    Sometimes the strings have quotes and
+    sometimes they don't. That's why we need
+    to check.
+    """
     if string[0] == '"':
         return True
 
@@ -27,6 +30,10 @@ def hasQuotes(string):
 
 
 def cleanString(string):
+    """Cleans the strings
+    This function deletes the unwanted
+    quotes and return characters in the end.
+    """
     # Removing quotes
     if (hasQuotes(string)):
         string = string[1:-2]
@@ -125,7 +132,7 @@ def main():
         contribution = contrib_dicts[idx]
         jsonObj = json.dumps(contribution, indent=4)
 
-        # Writing to sample.json
+        # Writing to contribution#.json
         with open("./output/contribution" + str(idx + 1) + ".json", "w") as outfile:
             outfile.write(jsonObj + '\n')
         print("\nFinished writing contribution" + str(idx + 1) + ".json")
