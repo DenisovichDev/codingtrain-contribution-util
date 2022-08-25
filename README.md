@@ -17,8 +17,8 @@ Open the old video metadata file from the website archive (located [here](https:
   - title: "Asteroid Field"
     author:
       name: "Bossy Smaxx"
-      url: "https://asteroidfield.glitch.me"
-    url: "https://glitch.com/~asteroidfield"
+      url: https://asteroidfield.glitch.me
+    url: https://glitch.com/~asteroidfield
   - title: "Swifty Starfield"
     author:
       name: "Bob Voorneveld"
@@ -30,10 +30,9 @@ Open the old video metadata file from the website archive (located [here](https:
       url: "http://projects.jurriaan.be/starfield/"
     url: "https://github.com/JurriaanD/Starfield"
   - title: "ES6 Starfield"
-    author:
-      name: "Bjorn Van Acker"
-    url: "https://bjorvack.github.io/code-challenges/challenges/cc-001-starfield/"
-    source: "https://github.com/bjorvack/code-challenges/tree/master/challenges/cc-001-starfield"
+    author: "Bjorn Van Acker"
+    url: https://bjorvack.github.io/code-challenges/challenges/cc-001-starfield/
+    source: https://github.com/bjorvack/code-challenges/tree/master/challenges/cc-001-starfield
 ```
 Remember to be careful about not skipping any spaces in the beginning. This file should be the exact copy of the contributions metadata. 
 
