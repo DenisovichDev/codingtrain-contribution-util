@@ -12,7 +12,7 @@ Gatsby format) that can now be copied into the `showcase` folder.
 
 First clone this repo locally in your computer.
 
-Open the old video metadata file from the website archive (located [here](https://github.com/CodingTrain/website-archive/blob/main/_CodingChallenges/)), and copy only the contributions part to a `txt` file inside the directory of this script. For example:
+Open the video metadata file from the [old website archive](https://github.com/CodingTrain/website-archive)). These files could be found in the repo inside folders like `_CodingChallnges` or `_GuestTutorials` and so on, with an underscore at the beginning. Open the correct metadata file and copy only the contributions part to a `txt` file inside the directory of this script. For example:
 ```txt
   - title: "Asteroid Field"
     author:
