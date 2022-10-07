@@ -90,12 +90,21 @@ def main():
                     name = name_line[len(name_iden):]
                     name = cleanString(name)
                     name_url_line = data[index+2]
-                    name_url = name_url_line[len(name_url_iden):]
-                    name_url = cleanString(name_url)
-                    auth_dict = {
-                        "name": name,
-                        "url": name_url
-                    }
+                    # Check if the url is there
+                    has_name_url = True if (name_url_line.find(
+                        name_url_iden) != -1) else False
+                    auth_dict = None
+                    if has_name_url:
+                        name_url = name_url_line[len(name_url_iden):]
+                        name_url = cleanString(name_url)
+                        auth_dict = {
+                            "name": name,
+                            "url": name_url
+                        }
+                    else:
+                        auth_dict = {
+                            "name": name
+                        }
                     contrib_dict["author"] = auth_dict
                     index += 2
                     continue
