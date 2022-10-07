@@ -13,6 +13,7 @@ name_iden = "      name: "
 name_url_iden = "      url: "
 url_iden = "    url: "
 video_id_iden = "    video_id: "
+source_iden = "    source: "
 
 YT_URL_FORMAT = "https://www.youtube.com/watch?v="
 
@@ -123,14 +124,25 @@ def main():
                 contrib_dict["url"] = url
                 index += 1
                 continue
-            # Video ID
-            if line.find(video_id_iden) != -1:
-                video_id = line[len(video_id_iden):]
-                video_id = cleanString(video_id)
-                yt_url = YT_URL_FORMAT + video_id
-                contrib_dict["url"] = yt_url
-                index += 1
-                continue
+            else:
+                url_not_found = True
+            # URL property is not found
+            if (url_not_found):
+                # Video ID
+                if line.find(video_id_iden) != -1:
+                    video_id = line[len(video_id_iden):]
+                    video_id = cleanString(video_id)
+                    yt_url = YT_URL_FORMAT + video_id
+                    contrib_dict["url"] = yt_url
+                    index += 1
+                    continue
+                # Source Code
+                if line.find(source_iden) != -1:
+                    source_code = line[len(source_iden):]
+                    source_code = cleanString(source_code)
+                    contrib_dict["url"] = source_code
+                    index += 1
+                    continue
 
             index += 1
         contrib_dicts.append(contrib_dict.copy())
