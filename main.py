@@ -62,6 +62,7 @@ def main():
 
     with open(input_file, "r") as file:
         contrib_dict = {}
+        url_found = True
 
         # List of individual lines
         data = file.readlines()
@@ -72,10 +73,31 @@ def main():
             # Title
             if line.find(title_iden) != -1:
                 # If not the first one, append to the array
-                # and reset the dict
+                # and reset the dict and reset
                 if (index != 0):
+                    # Fixing the absence of URL in the
+                    # previous submission
+                    if url_found == False:
+                        if "video" in contrib_dict:
+                            contrib_dict["url"] = contrib_dict["video"]
+                        elif "source" in contrib_dict:
+                            contrib_dict["url"] = contrib_dict["source"]
+                            
+                    try:
+                        del contrib_dict["video"]
+                    except KeyError:
+                        pass
+                    try:
+                        del contrib_dict["source"]
+                    except KeyError:
+                        pass
+
                     contrib_dicts.append(contrib_dict.copy())
                     contrib_dict = {}
+
+                    
+
+                    url_found = True
 
                 title = line[len(title_iden):]
                 if (hasQuotes(title)):
@@ -123,26 +145,24 @@ def main():
                 url = cleanString(url)
                 contrib_dict["url"] = url
                 index += 1
+                url_found = True
                 continue
-            else:
-                url_not_found = True
-            # URL property is not found
-            if (url_not_found):
-                # Video ID
-                if line.find(video_id_iden) != -1:
-                    video_id = line[len(video_id_iden):]
-                    video_id = cleanString(video_id)
-                    yt_url = YT_URL_FORMAT + video_id
-                    contrib_dict["url"] = yt_url
-                    index += 1
-                    continue
-                # Source Code
-                if line.find(source_iden) != -1:
-                    source_code = line[len(source_iden):]
-                    source_code = cleanString(source_code)
-                    contrib_dict["url"] = source_code
-                    index += 1
-                    continue
+
+            # Temporary ones that could replace url
+            if line.find(video_id_iden) != -1:
+                video_id = line[len(video_id_iden):]
+                video_id = cleanString(video_id)
+                yt_url = YT_URL_FORMAT + video_id
+                contrib_dict["video"] = yt_url
+                index += 1
+                continue
+            # Source Code
+            if line.find(source_iden) != -1:
+                source_code = line[len(source_iden):]
+                source_code = cleanString(source_code)
+                contrib_dict["source"] = source_code
+                index += 1
+                continue
 
             index += 1
         contrib_dicts.append(contrib_dict.copy())
